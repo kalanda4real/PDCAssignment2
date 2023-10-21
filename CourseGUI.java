@@ -121,6 +121,11 @@ public class CourseGUI implements ActionListener{
      searchButton.setFont(ButtonLooks);
      backButton.setFont(ButtonLooks);
      courseInfoButton.setFont(ButtonLooks);
+     
+     //Action listeners for buttons 
+        searchButton.addActionListener(this);
+        backButton.addActionListener(this);
+        courseInfoButton.addActionListener(this);
      //--------------------------------------------------------------------------------
         //Frame Settings
         CoursesFrame.setBackground(Color.blue);
@@ -137,15 +142,16 @@ public class CourseGUI implements ActionListener{
     
 
     }
-    
-    public static void main(String[] args)
-    {
-        new CourseGUI();
-    }
-
+ 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+         if (e.getSource() == this.searchButton) {
+            //enter search logic here
+        } else if (e.getSource() == this.backButton) {
+            CoursesFrame.dispose();
+            new StudentGUI();
+        } else if (e.getSource() == this.courseInfoButton) {
+            //display all content 
+        }  }
     
 }

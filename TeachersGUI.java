@@ -68,7 +68,13 @@ public class TeachersGUI implements ActionListener {
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
         centerPanel.add(displayTextArea);
-
+        
+         //---------------------------------------------------------------------------------
+        //Action listeners for buttons 
+        searchButton.addActionListener(this);
+        backButton.addActionListener(this);
+        allTeachersButton.addActionListener(this);
+        
         displayTextArea.setBackground(Color.LIGHT_GRAY);
         teacherHeaderPanel.add(teacherHeaderLabel);
 
@@ -90,11 +96,16 @@ public class TeachersGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Handle button clicks and actions here
+        if (e.getSource() == this.backButton) {
+            teacherFrame.dispose(); // Close the DepartmentsGUI
+            new MenuGUI(); 
+        } else if (e.getSource() == this.searchButton) {
+            //enter search logic from database
+           
+        } else if (e.getSource() == this.allTeachersButton) {
+            //enter logic to display from database
+        }
     }
 
-    public static void main(String[] args) {
-        new TeachersGUI();
-    }
 }
 

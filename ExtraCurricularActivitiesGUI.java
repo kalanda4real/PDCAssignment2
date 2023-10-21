@@ -74,6 +74,12 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         westPanel.add(backButton);
         westPanel.add(displayAllButton);
         westPanel.setLayout(new GridLayout(2, 1));
+          //---------------------------------------------------------------------------------
+        //Action listeners for buttons 
+        searchButton.addActionListener(this);
+        backButton.addActionListener(this);
+        displayAllButton.addActionListener(this);
+
 
         activitiesFrame.add(activitiesHeaderPanel, BorderLayout.NORTH);
         activitiesFrame.add(centerPanel, BorderLayout.CENTER);
@@ -86,14 +92,19 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         activitiesFrame.setLocation(300, 100);
         activitiesFrame.setVisible(true);
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Handle button clicks and actions here
+        if (e.getSource() == this.backButton) {
+            activitiesFrame.dispose(); // Close the DepartmentsGUI
+            new MenuGUI(); 
+        } else if (e.getSource() == this.searchButton) {
+            //enter search logic from database
+           
+        } else if (e.getSource() == this.displayAllButton) {
+            //enter logic to display from database
+        }
     }
 
-    public static void main(String[] args) {
-        new ExtraCurricularActivitiesGUI();
-    }
 }
 

@@ -63,6 +63,12 @@ public class DepartmentsGUI implements ActionListener {
         backButton.setFont(font);
         allDepartmentsButton.setFont(font);
         
+       
+        //Action listeners for buttons 
+        searchButton.addActionListener(this);
+        backButton.addActionListener(this);
+        allDepartmentsButton.addActionListener(this);
+        
         
         // Add components to panels
         centerPanel.add(searchLabel);
@@ -93,11 +99,17 @@ public class DepartmentsGUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       
-    }
-
-    public static void main(String[] args) {
-        new DepartmentsGUI();
+         if (e.getSource() == this.backButton) {
+            departmentFrame.dispose(); // Close the DepartmentsGUI
+            new MenuGUI(); 
+        } else if (e.getSource() == this.allDepartmentsButton) {
+            //input display logic  
+        } else if (e.getSource() == this.searchButton) {
+            //input search logic
+            String searchText = searchTextField.getText();
+            // use search text to diplay all the othe
+        }
+        
     }
 }
 

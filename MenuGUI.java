@@ -84,6 +84,13 @@ public class MenuGUI implements ActionListener{
         
         
         //---------------------------------------------------------------------------------
+        //Action listeners for buttons 
+        Studentbutton1.addActionListener(this);
+        Departmentbutton2.addActionListener(this);
+        Teachersbutton3.addActionListener(this);
+        Activitiesbutton4.addActionListener(this);
+
+        //---------------------------------------------------------------------------------
         
         //Frame settings
         menuFrame.setBackground( Color.gray); //choose better color 
@@ -105,11 +112,26 @@ public class MenuGUI implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+         if (e.getSource() == this.Studentbutton1) {
+            menuFrame.dispose(); // Close the DepartmentsGUI
+            new StudentGUI(); 
+        } else if (e.getSource() == this.Departmentbutton2) {
+            menuFrame.dispose();
+            new DepartmentsGUI();
+        } else if (e.getSource() == this.Teachersbutton3) {
+            menuFrame.dispose();
+            new TeachersGUI();
+        }
+        else if(e.getSource() == this.Activitiesbutton4)
+        {
+            menuFrame.dispose();
+            new ExtraCurricularActivitiesGUI();
+        }
     }
     
-     public static void main(String[] args) {
-         new MenuGUI();
+    public static void main(String[] args) {
+         new MenuGUI();//PROGRAM START
+         
     }
     
 }

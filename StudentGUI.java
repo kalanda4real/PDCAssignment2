@@ -84,6 +84,12 @@ public class StudentGUI implements ActionListener
         backButton.setFont(ButtonLooks);
         
         //--------------------------------------------------------------------------------
+        CoursesButton.addActionListener(this);
+        GradesButton.addActionListener(this);
+        StudentDetailsButton.addActionListener(this);
+        backButton.addActionListener(this);
+        
+        //--------------------------------------------------------------------------------
         //Frame Settings
         studentFrame.setBackground(Color.blue);
         studentFrame.add(StudentHeaderPanel, BorderLayout.NORTH);
@@ -98,14 +104,24 @@ public class StudentGUI implements ActionListener
     }
     
     
-    public static void main(String[] args)
-    {
-        new StudentGUI();
-    }
-
+ 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() == this.CoursesButton) {
+            studentFrame.dispose(); // Close the DepartmentsGUI
+            new CourseGUI(); 
+        } else if (e.getSource() == this.GradesButton) {
+            studentFrame.dispose();
+            new GradesGUI();
+        } else if (e.getSource() == this.StudentDetailsButton) {
+            studentFrame.dispose();
+            new StudentDetails();
+        }
+        else if(e.getSource() == this.backButton)
+        {
+            studentFrame.dispose();
+            new MenuGUI();
+        }
     }
     
 }

@@ -67,6 +67,10 @@ public class StudentDetails implements ActionListener {
         updatePanel.setLayout(new GridLayout(6, 1));
         
 
+         // Add action listeners to buttons
+        searchButton.addActionListener(this);
+        backButton.addActionListener(this);
+        commitButton.addActionListener(this);
 
         // Add components to panels
         updatePanel.add(backButton);
@@ -98,15 +102,15 @@ public class StudentDetails implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
             // Handle back button action
+            studentFrame.dispose();
+            new StudentGUI();
+            
         } else if (e.getSource() == searchButton) {
-            // Handle search button action (retrieve student details)
+            // Handle search button action (retrieve student details from database)
         } else if (e.getSource() == commitButton) {
-            // Handle commit button action (update student details)
+            // Handle commit button action (update student details from database)
         }
     }
 
-    public static void main(String[] args) {
-        new StudentDetails();
-    }
 }
 

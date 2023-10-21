@@ -7,7 +7,6 @@ package assignment2gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -117,7 +116,11 @@ public class GradesGUI implements ActionListener{
      Font ButtonLooks = new Font("Arial", Font.BOLD, 20);
      searchButton.setFont(ButtonLooks);
      backButton.setFont(ButtonLooks);
-     
+     //---------------------------------------------------------------------------------
+        //Action listeners for buttons 
+        searchButton.addActionListener(this);
+        backButton.addActionListener(this);
+       
      //--------------------------------------------------------------------------------
         //Frame Settings
         GradeGUI.setBackground(Color.blue);
@@ -137,7 +140,12 @@ public class GradesGUI implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    if (e.getSource() == this.backButton) {
+            GradeGUI.dispose(); // Close the DepartmentsGUI
+            new StudentGUI(); 
+        } else if (e.getSource() == this.searchButton) {
+           //input search logic from database
+        } 
     }
     
      public static void main(String[] args)
