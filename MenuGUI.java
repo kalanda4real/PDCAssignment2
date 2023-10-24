@@ -29,6 +29,7 @@ public class MenuGUI implements ActionListener{
     private final JButton Departmentbutton2;
     private final JButton Teachersbutton3;
     private final JButton Activitiesbutton4;
+    private final JButton Programbutton4;
    
     
     public MenuGUI()
@@ -57,16 +58,17 @@ public class MenuGUI implements ActionListener{
         Departmentbutton2 = new JButton("Open Department Menu");
         Teachersbutton3 = new JButton("Open Teachers Menu");
         Activitiesbutton4 = new JButton("Activities Menu");
-        
+        Programbutton4 = new JButton("Program Menu");
         
         //Navigation Panel cosmetic settings
         navPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        navPanel.setLayout(new GridLayout(4,0));
+        navPanel.setLayout(new GridLayout(5,0));
         navPanel.setBackground(Color.LIGHT_GRAY);
         navPanel.add(Studentbutton1);
         navPanel.add(Departmentbutton2);
         navPanel.add(Teachersbutton3);
         navPanel.add(Activitiesbutton4);
+        navPanel.add(Programbutton4);
         
         //---------------------------------------------------------------------------------
         //Button cosmetic settings 
@@ -74,12 +76,14 @@ public class MenuGUI implements ActionListener{
         Departmentbutton2.setForeground(Color.black);
         Teachersbutton3.setForeground(Color.black);
         Activitiesbutton4.setForeground(Color.black);
+        Programbutton4.setForeground(Color.black);
         
         Font ButtonLooks = new Font("Arial", Font.PLAIN, 20);
         Studentbutton1.setFont(ButtonLooks);
         Departmentbutton2.setFont(ButtonLooks);
         Teachersbutton3.setFont(ButtonLooks);
         Activitiesbutton4.setFont(ButtonLooks);
+        Programbutton4.setFont(ButtonLooks);
         
         
         
@@ -89,6 +93,7 @@ public class MenuGUI implements ActionListener{
         Departmentbutton2.addActionListener(this);
         Teachersbutton3.addActionListener(this);
         Activitiesbutton4.addActionListener(this);
+        Programbutton4.addActionListener(this);
 
         //---------------------------------------------------------------------------------
         
@@ -126,6 +131,11 @@ public class MenuGUI implements ActionListener{
         {
             menuFrame.dispose();
             new ExtraCurricularActivitiesGUI();
+        }
+        else if(e.getSource() == this.Programbutton4)
+        {
+            menuFrame.dispose();
+            new ProgramGUI();
         }
     }
     
