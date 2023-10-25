@@ -104,6 +104,9 @@ public class TeachersGUI implements ActionListener {
            
         } else if (e.getSource() == this.allTeachersButton) {
             //enter logic to display from database
+            dataRetrieval data = new dataRetrieval();
+            String info = data.retrieveTeachersInfo();
+            displayTextArea.append(info);
         }
     }
 

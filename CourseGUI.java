@@ -14,8 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 
 /**
@@ -45,6 +47,7 @@ public class CourseGUI implements ActionListener{
      private final JTextField CourseSearch;
      //Display
      private final JTextArea Displayscreen;
+     private final JScrollPane scrollPane;
      
     
     public CourseGUI()
@@ -58,8 +61,9 @@ public class CourseGUI implements ActionListener{
      centralPanel = new JPanel(new GridLayout(2, 1));
      //Display 
      Displayscreen = new JTextArea();
-     
-   
+     scrollPane = new JScrollPane(Displayscreen);
+     scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
      
      
      //--------------------------------------------------------------------------------
@@ -94,7 +98,7 @@ public class CourseGUI implements ActionListener{
      //Display Panel
      centralPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
      centralPanel.add(SearchPanel);
-     centralPanel.add(Displayscreen);
+     centralPanel.add(scrollPane);
      Displayscreen.setBackground(Color.WHITE);
      Displayscreen.setEditable(false);
     
@@ -152,6 +156,9 @@ public class CourseGUI implements ActionListener{
             new StudentGUI();
         } else if (e.getSource() == this.courseInfoButton) {
             //display all content 
+            dataRetrieval data = new dataRetrieval();
+            String info = data.retrieveStudentCourses();
+            Displayscreen.append(info);
         }  }
     
 }

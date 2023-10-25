@@ -19,8 +19,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 public class ProgramGUI implements ActionListener {
     private final JFrame ProgramFrame;
@@ -34,6 +36,7 @@ public class ProgramGUI implements ActionListener {
     private final JButton searchButton;
     private final JTextField searchTextField;
     private final JTextArea displayTextArea;
+    private final JScrollPane scrollPane;
 
     public ProgramGUI() {
         ProgramFrame = new JFrame();
@@ -47,6 +50,9 @@ public class ProgramGUI implements ActionListener {
         searchButton = new JButton("SEARCH");
         searchTextField = new JTextField(20);
         displayTextArea = new JTextArea(20, 40);
+        scrollPane = new JScrollPane(displayTextArea);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
 
         // Configure GUI elements and layout
         ProgramHeaderLabel.setFont(new Font("Arial", Font.BOLD, 26));
@@ -67,7 +73,7 @@ public class ProgramGUI implements ActionListener {
         centerPanel.add(searchLabel);
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
-        centerPanel.add(displayTextArea);
+        centerPanel.add(scrollPane);
         
          //---------------------------------------------------------------------------------
         //Action listeners for buttons 
@@ -104,6 +110,9 @@ public class ProgramGUI implements ActionListener {
            
         } else if (e.getSource() == this.allProgramsButton) {
             //enter logic to display from database
+            dataRetrieval data = new dataRetrieval();
+            String info = data.retrievePrograms();
+            displayTextArea.append(info);
         }
     }
 

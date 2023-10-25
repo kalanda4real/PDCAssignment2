@@ -104,6 +104,9 @@ public class DepartmentsGUI implements ActionListener {
             new MenuGUI(); 
         } else if (e.getSource() == this.allDepartmentsButton) {
             //input display logic  
+            dataRetrieval data = new dataRetrieval();
+            String info = data.retrieveDepartmentInfo();
+            displayTextArea.append(info);
         } else if (e.getSource() == this.searchButton) {
             //input search logic
             String searchText = searchTextField.getText();

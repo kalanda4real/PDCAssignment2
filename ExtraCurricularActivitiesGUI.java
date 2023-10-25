@@ -19,8 +19,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 public class ExtraCurricularActivitiesGUI implements ActionListener {
     private final JFrame activitiesFrame;
@@ -34,6 +36,7 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
     private final JTextField searchTextField;
     private final JButton searchButton;
     private final JTextArea displayTextArea;
+    private final JScrollPane scrollPane;
 
     public ExtraCurricularActivitiesGUI() {
         activitiesFrame = new JFrame();
@@ -47,6 +50,9 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         searchTextField = new JTextField(20);
         searchButton = new JButton("SEARCH");
         displayTextArea = new JTextArea(20, 40);
+        scrollPane = new JScrollPane(displayTextArea);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
 
         // Configure GUI elements and layout
         activitiesHeaderLabel.setFont(new Font("Arial", Font.BOLD, 26));
@@ -66,7 +72,7 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         centerPanel.add(searchLabel);
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
-        centerPanel.add(displayTextArea);
+        centerPanel.add(scrollPane);
 
         displayTextArea.setBackground(Color.WHITE);
         activitiesHeaderPanel.add(activitiesHeaderLabel);
@@ -103,6 +109,9 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
            
         } else if (e.getSource() == this.displayAllButton) {
             //enter logic to display from database
+            dataRetrieval data = new dataRetrieval();
+            String info = data.retrieveExtracurricularActivities();
+            displayTextArea.append(info);
         }
     }
 
