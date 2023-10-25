@@ -151,6 +151,10 @@ public class CourseGUI implements ActionListener{
     public void actionPerformed(ActionEvent e) {
          if (e.getSource() == this.searchButton) {
             //enter search logic here
+            String courseSearchText = CourseSearch.getText();
+            InfoSearch data = new InfoSearch();
+            String displayStudents = data.searchStudentCourses(courseSearchText);
+            Displayscreen.setText(displayStudents);   
         } else if (e.getSource() == this.backButton) {
             CoursesFrame.dispose();
             new StudentGUI();

@@ -106,6 +106,10 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
             new MenuGUI(); 
         } else if (e.getSource() == this.searchButton) {
             //enter search logic from database
+            String ActivitySearchtext = searchTextField.getText();
+            InfoSearch data = new InfoSearch();
+            String displayActivities = data.searchActivity(ActivitySearchtext);
+            displayTextArea.setText(displayActivities);
            
         } else if (e.getSource() == this.displayAllButton) {
             //enter logic to display from database

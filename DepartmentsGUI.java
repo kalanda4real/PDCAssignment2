@@ -109,8 +109,10 @@ public class DepartmentsGUI implements ActionListener {
             displayTextArea.append(info);
         } else if (e.getSource() == this.searchButton) {
             //input search logic
-            String searchText = searchTextField.getText();
-            // use search text to diplay all the othe
+            String DepartmentSearch = searchTextField.getText();
+            InfoSearch data = new InfoSearch();
+            String displayStudents = data.searchDepartment(DepartmentSearch);
+            displayTextArea.setText(displayStudents); 
         }
         
     }

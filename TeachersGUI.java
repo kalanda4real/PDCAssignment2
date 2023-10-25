@@ -101,6 +101,10 @@ public class TeachersGUI implements ActionListener {
             new MenuGUI(); 
         } else if (e.getSource() == this.searchButton) {
             //enter search logic from database
+            String TeacherSearchtext = searchTextField.getText();
+            InfoSearch data = new InfoSearch();
+            String displayStudents = data.searchTeacher(TeacherSearchtext);
+            displayTextArea.setText(displayStudents);
            
         } else if (e.getSource() == this.allTeachersButton) {
             //enter logic to display from database

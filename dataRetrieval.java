@@ -47,14 +47,12 @@ public class dataRetrieval {
     }
 
     public String retrieveStudentCourses() {
-        // You can use the same database retrieval logic to fetch the course information
-        // and build a formatted string
         String courseInfo = retrieveDataFromTable("StudentCourses", "student_id", "current_courses", "previous_courses");
 
-        return courseInfo; // Return the formatted course information as a string
+        return courseInfo; 
     }
 
-    private String retrieveDataFromTable(String tableName, String... columnNames) {
+    public String retrieveDataFromTable(String tableName, String... columnNames) {
     Connection connection = null;
     Statement statement = null;
     StringBuilder result = new StringBuilder();

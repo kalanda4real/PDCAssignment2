@@ -107,6 +107,10 @@ public class ProgramGUI implements ActionListener {
             new MenuGUI(); 
         } else if (e.getSource() == this.searchButton) {
             //enter search logic from database
+            String ProgramSearchText = searchTextField.getText();
+            InfoSearch data = new InfoSearch();
+            String displayProgram = data.searchProgram(ProgramSearchText);
+            displayTextArea.setText(displayProgram); 
            
         } else if (e.getSource() == this.allProgramsButton) {
             //enter logic to display from database
