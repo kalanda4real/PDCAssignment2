@@ -125,9 +125,4 @@ public class MenuGUI implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        new MenuGUI();//PROGRAM START
-
-    }
-
 }

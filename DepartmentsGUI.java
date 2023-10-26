@@ -75,17 +75,25 @@ public class DepartmentsGUI implements ActionListener {
         centerPanel.add(searchButton);
         centerPanel.add(displayTextArea);
 
-        displayTextArea.setBackground(Color.LIGHT_GRAY);
+        displayTextArea.setBackground(Color.WHITE);
         departmentHeaderPanel.add(departmentHeaderLabel);
 
         westPanel.add(backButton);
+        backButton.setForeground(Color.red);
+        Font BUTTONFONT = new Font("Arial", Font.BOLD, 18);
+        backButton.setFont(BUTTONFONT);
         westPanel.add(allDepartmentsButton);
         westPanel.setLayout(new GridLayout(3, 1));
-
+        allDepartmentsButton.setFont(BUTTONFONT);
+        
+        centerPanel.setBackground(Color.LIGHT_GRAY);
+        westPanel.setBackground(Color.LIGHT_GRAY);
+        
         departmentFrame.add(departmentHeaderPanel, BorderLayout.NORTH);
         departmentFrame.add(centerPanel, BorderLayout.CENTER);
         departmentFrame.add(westPanel, BorderLayout.WEST);
 
+        departmentFrame.setBackground(Color.gray);
         departmentFrame.setTitle("S.I.M.S");
         departmentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         departmentFrame.setSize(800, 600);

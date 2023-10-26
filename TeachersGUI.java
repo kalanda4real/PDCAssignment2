@@ -76,8 +76,18 @@ public class TeachersGUI implements ActionListener {
         backButton.addActionListener(this);
         allTeachersButton.addActionListener(this);
 
-        displayTextArea.setBackground(Color.LIGHT_GRAY);
+        displayTextArea.setBackground(Color.WHITE);
         teacherHeaderPanel.add(teacherHeaderLabel);
+        //PANEL COLOR
+        centerPanel.setBackground(Color.LIGHT_GRAY);
+        westPanel.setBackground(Color.LIGHT_GRAY);
+        
+        Font BUTTONFONT = new Font("Arial", Font.BOLD, 18);
+        backButton.setFont(BUTTONFONT);
+        allTeachersButton.setFont(BUTTONFONT);
+        
+        backButton.setForeground(Color.red);
+        
 
         westPanel.add(backButton);
         westPanel.add(allTeachersButton);
@@ -87,6 +97,7 @@ public class TeachersGUI implements ActionListener {
         teacherFrame.add(centerPanel, BorderLayout.CENTER);
         teacherFrame.add(westPanel, BorderLayout.WEST);
 
+        teacherFrame.setBackground(Color.gray);
         teacherFrame.setTitle("S.I.M.S - Teachers");
         teacherFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         teacherFrame.setSize(800, 600);

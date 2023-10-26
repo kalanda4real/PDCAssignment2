@@ -61,12 +61,13 @@ public class ProgramGUI implements ActionListener {
         centerPanel.setBackground(Color.WHITE);
         displayTextArea.setEditable(false);
 
-        // Set font for labels
+        // Set font for labels IN BUTTONS
         Font font = new Font("Arial", Font.BOLD, 16);
         searchLabel.setFont(font);
         searchTextField.setFont(font);
         searchButton.setFont(font);
         backButton.setFont(font);
+        backButton.setForeground(Color.red);
         allProgramsButton.setFont(font);
 
         // Add components to panels
@@ -74,6 +75,8 @@ public class ProgramGUI implements ActionListener {
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
         centerPanel.add(scrollPane);
+        centerPanel.setBackground(Color.LIGHT_GRAY);
+        
 
         //---------------------------------------------------------------------------------
         //Action listeners for buttons 
@@ -81,17 +84,19 @@ public class ProgramGUI implements ActionListener {
         backButton.addActionListener(this);
         allProgramsButton.addActionListener(this);
 
-        displayTextArea.setBackground(Color.LIGHT_GRAY);
+        displayTextArea.setBackground(Color.WHITE);
         ProgramHeaderPanel.add(ProgramHeaderLabel);
 
         westPanel.add(backButton);
         westPanel.add(allProgramsButton);
         westPanel.setLayout(new GridLayout(3, 1));
+        westPanel.setBackground(Color.LIGHT_GRAY);
 
         ProgramFrame.add(ProgramHeaderPanel, BorderLayout.NORTH);
         ProgramFrame.add(centerPanel, BorderLayout.CENTER);
         ProgramFrame.add(westPanel, BorderLayout.WEST);
 
+        ProgramFrame.setBackground(Color.gray);
         ProgramFrame.setTitle("S.I.M.S");
         ProgramFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ProgramFrame.setSize(800, 600);

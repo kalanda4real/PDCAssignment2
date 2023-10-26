@@ -86,7 +86,7 @@ public class CourseGUI implements ActionListener {
         //Student Navigation
         CoruseNav.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         CoruseNav.setLayout(new GridLayout(5, 0));
-        CoruseNav.setBackground(Color.gray);
+        CoruseNav.setBackground(Color.LIGHT_GRAY);
 
         CoruseNav.add(courseInfoButton);
         CoruseNav.add(backButton);
@@ -103,7 +103,7 @@ public class CourseGUI implements ActionListener {
         //Search Panel
         SearchPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         SearchPanel.setLayout(new GridLayout(4, 0));
-        SearchPanel.setBackground(Color.gray);
+        SearchPanel.setBackground(Color.LIGHT_GRAY);
         SearchPanel.add(searchLabel);
         CourseSearch = new JTextField(1);
         SearchPanel.add(CourseSearch);
@@ -113,9 +113,9 @@ public class CourseGUI implements ActionListener {
 
         //--------------------------------------------------------------------------------
         //Button comsmetic settings
-        searchButton.setForeground(Color.gray);
-        backButton.setForeground(Color.gray);
-        courseInfoButton.setForeground(Color.gray);
+        searchButton.setForeground(Color.BLACK);
+        backButton.setForeground(Color.red);
+        courseInfoButton.setForeground(Color.BLACK);
 
         Font ButtonLooks = new Font("Arial", Font.BOLD, 20);
         searchButton.setFont(ButtonLooks);
@@ -128,7 +128,7 @@ public class CourseGUI implements ActionListener {
         courseInfoButton.addActionListener(this);
         //--------------------------------------------------------------------------------
         //Frame Settings
-        CoursesFrame.setBackground(Color.blue);
+        CoursesFrame.setBackground(Color.gray);
         CoursesFrame.add(CourseHeader, BorderLayout.NORTH);
         CoursesFrame.add(CoruseNav, BorderLayout.WEST);
         CoursesFrame.add(centralPanel, BorderLayout.CENTER);

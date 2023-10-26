@@ -61,7 +61,7 @@ public class StudentDetails implements ActionListener {
 
         // Configure GUI elements and layout
         headerLabel.setFont(new Font("Arial", Font.BOLD, 26));
-        navPanel.setBounds(0, 0, 0, 0);
+        navPanel.setBounds(10, 10, 10, 10);
         navPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         displayPanel.setBackground(Color.WHITE);
         displayTextArea.setEditable(false);
@@ -69,8 +69,13 @@ public class StudentDetails implements ActionListener {
 
         //font for the display
         displayTextArea.setFont(new Font("DIALOG", Font.BOLD, 15));
-
         displayPanel.add(displayTextArea);
+        
+        backButton.setForeground(Color.red);
+        backButton.setFont(new Font("Arial", Font.BOLD, 20));
+        searchButton.setFont(new Font("Arial", Font.BOLD, 20));
+        commitButton.setFont(new Font("Arial", Font.BOLD, 17));
+        
         // Add action listeners to buttons
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
@@ -80,6 +85,8 @@ public class StudentDetails implements ActionListener {
         updatePanel.add(backButton);
         navPanel.add(headerLabel);
 
+        updatePanel.setBackground(Color.LIGHT_GRAY);
+        commitPanel.setBackground(Color.LIGHT_GRAY);
         updatePanel.add(searchLabel);
         updatePanel.add(studentNameField);
         updatePanel.add(searchButton);
@@ -94,6 +101,7 @@ public class StudentDetails implements ActionListener {
         studentFrame.add(displayPanel, BorderLayout.CENTER);
         studentFrame.add(commitPanel, BorderLayout.SOUTH);
 
+        studentFrame.setBackground(Color.gray);
         studentFrame.setTitle("S.I.M.S");
         studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         studentFrame.setSize(800, 600);
@@ -116,7 +124,13 @@ public class StudentDetails implements ActionListener {
             displayTextArea.setText(displayStudents);
 
         } else if (e.getSource() == commitButton) {
-            // Handle commit button action (update student details from database)
+            String studentSearch = studentNameField.getText();
+            String coursesSelect = Postcode.getText();
+            String GradeSelect = phoneNumberField.getText();
+            UpdateStudentDetails update = new UpdateStudentDetails();
+            String updatedetails = update.updateStudentDetails(studentSearch,coursesSelect,GradeSelect);
+            displayTextArea.setText(updatedetails);
+            
         }
     }
 
