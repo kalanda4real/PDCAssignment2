@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +35,16 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+                
+                int studnet;
+                try {
+                // Try to parse the input as an integer
+                studnet = Integer.parseInt(Student_id);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Courses ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
                 String query = "SELECT Student_id, current_courses, previous_courses "
                         + " FROM StudentCourses "
                         + "WHERE Student_id =" + Student_id;
@@ -87,6 +98,15 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+            int DepartmentID;
+                try {
+                // Try to parse the input as an integer
+                DepartmentID = Integer.parseInt(Department_id);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Department ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
                 String query = "SELECT Department_id, Department_name, Department_head "
                         + "FROM DepartmentInfo "
                         + "WHERE Department_id = " + Department_id;
@@ -95,7 +115,7 @@ public class InfoSearch {
 
                 while (resultSet.next()) {
                     validityChecker = true;
-                    String DepartmentID = resultSet.getString("Department_id");
+                    String Department_ID = resultSet.getString("Department_id");
                     String DepartName = resultSet.getString("Department_name");
                     String DepartHead = resultSet.getString("Department_head");
                     result.append("Department ID: " + DepartmentID + "\n");
@@ -140,6 +160,15 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+                int TeacherID;
+                try {
+                // Try to parse the input as an integer
+                TeacherID = Integer.parseInt(Teacher_id);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Student ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
                 String query = "SELECT Teacher_id, Age, Firstname, Lastname, Department_name, Subject_taught "
                         + "FROM TeachersInfo "
                         + "WHERE Teacher_id = " + Teacher_id;
@@ -148,13 +177,13 @@ public class InfoSearch {
 
                 while (resultSet.next()) {
                     validityChecker = true;
-                    String TeacherID = resultSet.getString("Teacher_id");
+                    String Teacher_ID = resultSet.getString("Teacher_id");
                     String age = resultSet.getString("Age");
                     String teacherFN = resultSet.getString("FirstName");
                     String teacherLN = resultSet.getString("LastName");
                     String Departname = resultSet.getString("Department_name");
                     String SubjectN = resultSet.getString("Subject_taught");
-                    result.append("Teacher ID: " + TeacherID + "\n");
+                    result.append("Teacher ID: " + Teacher_ID + "\n");
                     result.append("Age: " + age + "\n");
                     result.append("FirstName: " + teacherFN + "\n");
                     result.append("LastName: " + teacherLN + "\n");
@@ -199,6 +228,15 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+                int StudentID;
+                try {
+                // Try to parse the input as an integer
+                StudentID = Integer.parseInt(Student_id);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Student ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
                 String query = "SELECT Student_id, Activity "
                         + "FROM ExtracurricularActivities "
                         + "WHERE Student_id = " + Student_id;
@@ -250,6 +288,16 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+                int Programid;
+                try {
+                // Try to parse the input as an integer
+                Programid = Integer.parseInt(Program_id);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Program ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
+                
                 String query = "SELECT Program_id, Department_id, program_name "
                         + "FROM Programs "
                         + "WHERE Program_id = " + Program_id;
@@ -303,6 +351,15 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+                int studentId;
+            try {
+                // Try to parse the input as an integer
+                studentId = Integer.parseInt(ID);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Student ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
                 String query = "SELECT ID, Age, FirstName, LastName, PhoneNumber, PostCode "
                         + "FROM StudentInfo "
                         + "WHERE ID = " + ID;
@@ -362,11 +419,25 @@ public class InfoSearch {
 
                 statement = connection.createStatement();
                 // Construct the SQL query to get course information by course ID
+                
+            int studentId;
+            try {
+                // Try to parse the input as an integer
+                studentId = Integer.parseInt(Student_ID);
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
+                JOptionPane.showMessageDialog(null, "Invalid Student ID. Please enter a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
+                return result.toString();
+            }
+                
+                
                 String query = "SELECT Student_ID, course_name, grade "
                         + "FROM studentGrades "
-                        + "WHERE Student_ID = " + Student_ID;
-
+                        + "WHERE Student_ID = " + studentId;
+                
+                
                 ResultSet resultSet = statement.executeQuery(query);
+                
 
                 while (resultSet.next()) {
                     validityChecker = true;

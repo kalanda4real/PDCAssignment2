@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Oct 26 17:13:01 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-6a2f-85a6-0000069849a0 
+on database directory /Users/martinkalanda/NetBeansProjects/Assignment2GUI/Studentinformationmanagementsystem with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@763d9750 
+Loaded from file:/Users/martinkalanda/Downloads/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.18+9-LTS-195
+user.dir=/Users/martinkalanda/NetBeansProjects/Assignment2GUI
+os.name=Mac OS X
+os.arch=aarch64
+os.version=14.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

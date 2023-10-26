@@ -6,6 +6,7 @@ package assignment2gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
@@ -34,8 +35,8 @@ public class LoginGUI {
         loginframe = new JFrame();
 
         //LABELS
-        userLabel = new JLabel(" LOGIN: ");
-        PWLabel = new JLabel(" PASSWORD: ");
+        userLabel = new JLabel("  USERNAME: ");
+        PWLabel = new JLabel("  PASSWORD: ");
 
         //TEXT FEILDS
         usernameField = new JTextField();
@@ -53,6 +54,9 @@ public class LoginGUI {
 
         JPanel confirmPanel = new JPanel();
         confirmPanel.add(Click);
+        Click.setForeground(Color.red);
+        Font font = new Font("Arial", Font.BOLD, 18);
+        Click.setFont(font);
         loginframe.add(inputPanel, BorderLayout.CENTER);
         loginframe.add(confirmPanel, BorderLayout.SOUTH);
 

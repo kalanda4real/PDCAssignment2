@@ -47,7 +47,7 @@ public class StudentGUI implements ActionListener {
         StudentHeaderPanel.setBounds(0, 0, 0, 0);
         studentHeaderLabel = new JLabel("Student MENU");
         StudentHeaderPanel.add(studentHeaderLabel);
-        StudentHeaderPanel.setBackground(Color.gray);
+        
 
         Font mainHeaderFont = new Font("Arial", Font.BOLD, 26);
         studentHeaderLabel.setFont(mainHeaderFont);
@@ -63,17 +63,17 @@ public class StudentGUI implements ActionListener {
         //Student Navigation
         StudentNav.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         StudentNav.setLayout(new GridLayout(4, 0));
-        StudentNav.setBackground(Color.gray);
+        StudentNav.setBackground(Color.LIGHT_GRAY);
         StudentNav.add(CoursesButton);
         StudentNav.add(GradesButton);
         StudentNav.add(StudentDetailsButton);
         StudentNav.add(backButton);
         //--------------------------------------------------------------------------------
         //Button comsmetic settings
-        CoursesButton.setForeground(Color.gray);
-        GradesButton.setForeground(Color.gray);
-        StudentDetailsButton.setForeground(Color.gray);
-        backButton.setForeground(Color.gray);
+        CoursesButton.setForeground(Color.BLACK);
+        GradesButton.setForeground(Color.BLACK);
+        StudentDetailsButton.setForeground(Color.BLACK);
+        backButton.setForeground(Color.RED);
 
         Font ButtonLooks = new Font("Arial", Font.BOLD, 20);
         CoursesButton.setFont(ButtonLooks);
@@ -89,7 +89,7 @@ public class StudentGUI implements ActionListener {
 
         //--------------------------------------------------------------------------------
         //Frame Settings
-        studentFrame.setBackground(Color.blue);
+        studentFrame.setBackground(Color.gray);
         studentFrame.add(StudentHeaderPanel, BorderLayout.NORTH);
         studentFrame.add(StudentNav, BorderLayout.CENTER);
         studentFrame.setTitle("S.I.M.S");

@@ -66,6 +66,7 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         searchTextField.setFont(font);
         searchButton.setFont(font);
         backButton.setFont(font);
+        backButton.setForeground(Color.red);
         displayAllButton.setFont(font);
 
         // Add components to panels
@@ -80,6 +81,7 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         westPanel.add(backButton);
         westPanel.add(displayAllButton);
         westPanel.setLayout(new GridLayout(2, 1));
+        
         //---------------------------------------------------------------------------------
         //Action listeners for buttons 
         searchButton.addActionListener(this);
@@ -90,6 +92,7 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         activitiesFrame.add(centerPanel, BorderLayout.CENTER);
         activitiesFrame.add(westPanel, BorderLayout.WEST);
 
+        activitiesFrame.setBackground(Color.gray);
         activitiesFrame.setTitle("S.I.M.S");
         activitiesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         activitiesFrame.setSize(800, 600);
