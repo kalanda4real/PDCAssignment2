@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class DepartmentsGUI implements ActionListener {
+
     private final JFrame departmentFrame;
     private final JPanel departmentHeaderPanel;
     private final JPanel centerPanel;
@@ -62,20 +63,18 @@ public class DepartmentsGUI implements ActionListener {
         searchButton.setFont(font);
         backButton.setFont(font);
         allDepartmentsButton.setFont(font);
-        
-       
+
         //Action listeners for buttons 
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
         allDepartmentsButton.addActionListener(this);
-        
-        
+
         // Add components to panels
         centerPanel.add(searchLabel);
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
         centerPanel.add(displayTextArea);
-        
+
         displayTextArea.setBackground(Color.LIGHT_GRAY);
         departmentHeaderPanel.add(departmentHeaderLabel);
 
@@ -94,14 +93,13 @@ public class DepartmentsGUI implements ActionListener {
         departmentFrame.setLocation(300, 100);
         departmentFrame.setVisible(true);
 
-       
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         if (e.getSource() == this.backButton) {
+        if (e.getSource() == this.backButton) {
             departmentFrame.dispose(); // Close the DepartmentsGUI
-            new MenuGUI(); 
+            new MenuGUI();
         } else if (e.getSource() == this.allDepartmentsButton) {
             //input display logic  
             dataRetrieval data = new dataRetrieval();
@@ -112,9 +110,8 @@ public class DepartmentsGUI implements ActionListener {
             String DepartmentSearch = searchTextField.getText();
             InfoSearch data = new InfoSearch();
             String displayStudents = data.searchDepartment(DepartmentSearch);
-            displayTextArea.setText(displayStudents); 
+            displayTextArea.setText(displayStudents);
         }
-        
+
     }
 }
-

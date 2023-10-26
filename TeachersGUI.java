@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class TeachersGUI implements ActionListener {
+
     private final JFrame teacherFrame;
     private final JPanel teacherHeaderPanel;
     private final JPanel centerPanel;
@@ -68,13 +69,13 @@ public class TeachersGUI implements ActionListener {
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
         centerPanel.add(displayTextArea);
-        
-         //---------------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------------
         //Action listeners for buttons 
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
         allTeachersButton.addActionListener(this);
-        
+
         displayTextArea.setBackground(Color.LIGHT_GRAY);
         teacherHeaderPanel.add(teacherHeaderLabel);
 
@@ -98,14 +99,14 @@ public class TeachersGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.backButton) {
             teacherFrame.dispose(); // Close the DepartmentsGUI
-            new MenuGUI(); 
+            new MenuGUI();
         } else if (e.getSource() == this.searchButton) {
             //enter search logic from database
             String TeacherSearchtext = searchTextField.getText();
             InfoSearch data = new InfoSearch();
             String displayStudents = data.searchTeacher(TeacherSearchtext);
             displayTextArea.setText(displayStudents);
-           
+
         } else if (e.getSource() == this.allTeachersButton) {
             //enter logic to display from database
             dataRetrieval data = new dataRetrieval();
@@ -115,4 +116,3 @@ public class TeachersGUI implements ActionListener {
     }
 
 }
-

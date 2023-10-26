@@ -20,9 +20,8 @@ import javax.swing.JPanel;
  *
  * @author martinkalanda
  */
-public class StudentGUI implements ActionListener
-{
-    
+public class StudentGUI implements ActionListener {
+
     //Frame
     private final JFrame studentFrame;
     //Panels
@@ -35,60 +34,59 @@ public class StudentGUI implements ActionListener
     private final JButton GradesButton;
     private final JButton StudentDetailsButton;
     private final JButton backButton;
-    
-    public StudentGUI()
-    {
+
+    public StudentGUI() {
         //Frame instances
         studentFrame = new JFrame();
         //Panel instance
         StudentNav = new JPanel();
         StudentHeaderPanel = new JPanel();
-        
+
         //--------------------------------------------------------------------------------
         //Student Header panel setting
         StudentHeaderPanel.setBounds(0, 0, 0, 0);
         studentHeaderLabel = new JLabel("Student MENU");
         StudentHeaderPanel.add(studentHeaderLabel);
         StudentHeaderPanel.setBackground(Color.gray);
-        
+
         Font mainHeaderFont = new Font("Arial", Font.BOLD, 26);
         studentHeaderLabel.setFont(mainHeaderFont);
-        
+
         //--------------------------------------------------------------------------------
         //Navigation Button Names
         CoursesButton = new JButton("COURSES");
         GradesButton = new JButton("GRADES");
         StudentDetailsButton = new JButton("STUDENT DETAILS");
         backButton = new JButton("BACK");
-        
+
         //--------------------------------------------------------------------------------
         //Student Navigation
         StudentNav.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        StudentNav.setLayout(new GridLayout(4,0));
+        StudentNav.setLayout(new GridLayout(4, 0));
         StudentNav.setBackground(Color.gray);
         StudentNav.add(CoursesButton);
         StudentNav.add(GradesButton);
         StudentNav.add(StudentDetailsButton);
         StudentNav.add(backButton);
-       //--------------------------------------------------------------------------------
-       //Button comsmetic settings
+        //--------------------------------------------------------------------------------
+        //Button comsmetic settings
         CoursesButton.setForeground(Color.gray);
         GradesButton.setForeground(Color.gray);
         StudentDetailsButton.setForeground(Color.gray);
         backButton.setForeground(Color.gray);
-        
+
         Font ButtonLooks = new Font("Arial", Font.BOLD, 20);
         CoursesButton.setFont(ButtonLooks);
         GradesButton.setFont(ButtonLooks);
         StudentDetailsButton.setFont(ButtonLooks);
         backButton.setFont(ButtonLooks);
-        
+
         //--------------------------------------------------------------------------------
         CoursesButton.addActionListener(this);
         GradesButton.addActionListener(this);
         StudentDetailsButton.addActionListener(this);
         backButton.addActionListener(this);
-        
+
         //--------------------------------------------------------------------------------
         //Frame Settings
         studentFrame.setBackground(Color.blue);
@@ -102,26 +100,22 @@ public class StudentGUI implements ActionListener
         studentFrame.setVisible(true);
         //--------------------------------------------------------------------------------
     }
-    
-    
- 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.CoursesButton) {
             studentFrame.dispose(); // Close the DepartmentsGUI
-            new CourseGUI(); 
+            new CourseGUI();
         } else if (e.getSource() == this.GradesButton) {
             studentFrame.dispose();
             new GradesGUI();
         } else if (e.getSource() == this.StudentDetailsButton) {
             studentFrame.dispose();
             new StudentDetails();
-        }
-        else if(e.getSource() == this.backButton)
-        {
+        } else if (e.getSource() == this.backButton) {
             studentFrame.dispose();
             new MenuGUI();
         }
     }
-    
+
 }

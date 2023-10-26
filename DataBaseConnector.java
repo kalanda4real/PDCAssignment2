@@ -4,21 +4,19 @@
  */
 package assignment2gui;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBaseConnector {
-    private static final String DatabaseURL = "jdbc:derby:Studentinformationmanagementsystem;create=true";
-    
 
-    public  Connection getConnection() {
+    private static final String DatabaseURL = "jdbc:derby:Studentinformationmanagementsystem;create=true";
+
+    public Connection getConnection() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(DatabaseURL);
-            if(connection != null)
-            {
+            if (connection != null) {
                 System.out.println("Connected to the embedded Derby database successfully!");
             }
         } catch (SQLException e) {
@@ -27,6 +25,5 @@ public class DataBaseConnector {
         }
         return connection;
     }
-
 
 }

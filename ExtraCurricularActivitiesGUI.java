@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 public class ExtraCurricularActivitiesGUI implements ActionListener {
+
     private final JFrame activitiesFrame;
     private final JPanel activitiesHeaderPanel;
     private final JPanel centerPanel;
@@ -53,7 +54,6 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         scrollPane = new JScrollPane(displayTextArea);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-
         // Configure GUI elements and layout
         activitiesHeaderLabel.setFont(new Font("Arial", Font.BOLD, 26));
         activitiesHeaderPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -80,12 +80,11 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         westPanel.add(backButton);
         westPanel.add(displayAllButton);
         westPanel.setLayout(new GridLayout(2, 1));
-          //---------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
         //Action listeners for buttons 
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
         displayAllButton.addActionListener(this);
-
 
         activitiesFrame.add(activitiesHeaderPanel, BorderLayout.NORTH);
         activitiesFrame.add(centerPanel, BorderLayout.CENTER);
@@ -98,19 +97,19 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
         activitiesFrame.setLocation(300, 100);
         activitiesFrame.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.backButton) {
             activitiesFrame.dispose(); // Close the DepartmentsGUI
-            new MenuGUI(); 
+            new MenuGUI();
         } else if (e.getSource() == this.searchButton) {
             //enter search logic from database
             String ActivitySearchtext = searchTextField.getText();
             InfoSearch data = new InfoSearch();
             String displayActivities = data.searchActivity(ActivitySearchtext);
             displayTextArea.setText(displayActivities);
-           
+
         } else if (e.getSource() == this.displayAllButton) {
             //enter logic to display from database
             dataRetrieval data = new dataRetrieval();
@@ -120,4 +119,3 @@ public class ExtraCurricularActivitiesGUI implements ActionListener {
     }
 
 }
-

@@ -7,7 +7,7 @@ package assignment2gui;
 /**
  *
  * @author martinkalanda
-*/
+ */
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 public class ProgramGUI implements ActionListener {
+
     private final JFrame ProgramFrame;
     private final JPanel ProgramHeaderPanel;
     private final JPanel centerPanel;
@@ -53,7 +54,6 @@ public class ProgramGUI implements ActionListener {
         scrollPane = new JScrollPane(displayTextArea);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-
         // Configure GUI elements and layout
         ProgramHeaderLabel.setFont(new Font("Arial", Font.BOLD, 26));
         ProgramHeaderPanel.setBounds(0, 0, 0, 0);
@@ -74,13 +74,13 @@ public class ProgramGUI implements ActionListener {
         centerPanel.add(searchTextField);
         centerPanel.add(searchButton);
         centerPanel.add(scrollPane);
-        
-         //---------------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------------
         //Action listeners for buttons 
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
         allProgramsButton.addActionListener(this);
-        
+
         displayTextArea.setBackground(Color.LIGHT_GRAY);
         ProgramHeaderPanel.add(ProgramHeaderLabel);
 
@@ -104,14 +104,14 @@ public class ProgramGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.backButton) {
             ProgramFrame.dispose(); // Close the DepartmentsGUI
-            new MenuGUI(); 
+            new MenuGUI();
         } else if (e.getSource() == this.searchButton) {
             //enter search logic from database
             String ProgramSearchText = searchTextField.getText();
             InfoSearch data = new InfoSearch();
             String displayProgram = data.searchProgram(ProgramSearchText);
-            displayTextArea.setText(displayProgram); 
-           
+            displayTextArea.setText(displayProgram);
+
         } else if (e.getSource() == this.allProgramsButton) {
             //enter logic to display from database
             dataRetrieval data = new dataRetrieval();
@@ -121,4 +121,3 @@ public class ProgramGUI implements ActionListener {
     }
 
 }
-

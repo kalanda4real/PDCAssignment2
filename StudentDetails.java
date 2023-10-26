@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class StudentDetails implements ActionListener {
+
     private final JFrame studentFrame;
     private final JPanel navPanel;
     private final JPanel displayPanel;
@@ -36,7 +37,7 @@ public class StudentDetails implements ActionListener {
     private final JButton searchButton;
     private final JButton commitButton;
     private final JTextField studentNameField;
-    private final JTextField emailField;
+    private final JTextField Postcode;
     private final JTextField phoneNumberField;
     private final JTextArea displayTextArea;
 
@@ -47,15 +48,15 @@ public class StudentDetails implements ActionListener {
         updatePanel = new JPanel(new GridLayout(2, 1));
         commitPanel = new JPanel();
         headerLabel = new JLabel("STUDENT DETAILS MENU");
-        emailLabel = new JLabel("Email: ");
-        PNLabel = new JLabel("Phone Num: ");
+        emailLabel = new JLabel("New PostCode:");
+        PNLabel = new JLabel("New PhoneNum:");
         searchLabel = new JLabel("   SEARCH STUDENT ID:");
         backButton = new JButton("BACK");
         searchButton = new JButton("SEARCH");
         commitButton = new JButton("Commit");
-        studentNameField = new JTextField(20);
-        emailField = new JTextField(20);
-        phoneNumberField = new JTextField(20);
+        studentNameField = new JTextField(10);
+        Postcode = new JTextField(10);
+        phoneNumberField = new JTextField(10);
         displayTextArea = new JTextArea(20, 40);
 
         // Configure GUI elements and layout
@@ -65,9 +66,12 @@ public class StudentDetails implements ActionListener {
         displayPanel.setBackground(Color.WHITE);
         displayTextArea.setEditable(false);
         updatePanel.setLayout(new GridLayout(6, 1));
-        
 
-         // Add action listeners to buttons
+        //font for the display
+        displayTextArea.setFont(new Font("DIALOG", Font.BOLD, 15));
+
+        displayPanel.add(displayTextArea);
+        // Add action listeners to buttons
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
         commitButton.addActionListener(this);
@@ -80,7 +84,7 @@ public class StudentDetails implements ActionListener {
         updatePanel.add(studentNameField);
         updatePanel.add(searchButton);
         commitPanel.add(emailLabel);
-        commitPanel.add(emailField);
+        commitPanel.add(Postcode);
         commitPanel.add(PNLabel);
         commitPanel.add(phoneNumberField);
         commitPanel.add(commitButton);
@@ -90,7 +94,7 @@ public class StudentDetails implements ActionListener {
         studentFrame.add(displayPanel, BorderLayout.CENTER);
         studentFrame.add(commitPanel, BorderLayout.SOUTH);
 
-        studentFrame.setTitle("Student Details");
+        studentFrame.setTitle("S.I.M.S");
         studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         studentFrame.setSize(800, 600);
         studentFrame.setResizable(false);
@@ -104,13 +108,16 @@ public class StudentDetails implements ActionListener {
             // Handle back button action
             studentFrame.dispose();
             new StudentGUI();
-            
+
         } else if (e.getSource() == searchButton) {
-            // Handle search button action (retrieve student details from database)
+            String StudentSearchText = studentNameField.getText();
+            InfoSearch data = new InfoSearch();
+            String displayStudents = data.searchStudentDetails(StudentSearchText);
+            displayTextArea.setText(displayStudents);
+
         } else if (e.getSource() == commitButton) {
             // Handle commit button action (update student details from database)
         }
     }
 
 }
-

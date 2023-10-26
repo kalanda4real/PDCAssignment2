@@ -16,7 +16,8 @@ import javax.swing.*;
  *
  * @author martinkalanda
  */
-public class MenuGUI implements ActionListener{
+public class MenuGUI implements ActionListener {
+
     //Frame
     private final JFrame menuFrame;
     //Panels
@@ -30,46 +31,42 @@ public class MenuGUI implements ActionListener{
     private final JButton Teachersbutton3;
     private final JButton Activitiesbutton4;
     private final JButton Programbutton4;
-   
-    
-    public MenuGUI()
-    {
+
+    public MenuGUI() {
         //Frameinstances
         menuFrame = new JFrame();
         //panel instances
         navPanel = new JPanel();
         headerPanel = new JPanel();
-        
+
         //--------------------------------------------------------------------------------
         //Header Panel cosmetic settings
         headerPanel.setBounds(0, 0, 0, 100);
         mainHeader = new JLabel("S.I.M.S MAIN MENU");
         headerPanel.add(mainHeader);
-       
-        
+
         //Header Label settings 
         Font mainHeaderFont = new Font("Arial", Font.BOLD, 26);
         mainHeader.setFont(mainHeaderFont);
-        
+
         //---------------------------------------------------------------------------------
-        
         //Naviagtion Button names
         Studentbutton1 = new JButton("Open Student Menu");
         Departmentbutton2 = new JButton("Open Department Menu");
         Teachersbutton3 = new JButton("Open Teachers Menu");
         Activitiesbutton4 = new JButton("Activities Menu");
         Programbutton4 = new JButton("Program Menu");
-        
+
         //Navigation Panel cosmetic settings
         navPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        navPanel.setLayout(new GridLayout(5,0));
+        navPanel.setLayout(new GridLayout(5, 0));
         navPanel.setBackground(Color.LIGHT_GRAY);
         navPanel.add(Studentbutton1);
         navPanel.add(Departmentbutton2);
         navPanel.add(Teachersbutton3);
         navPanel.add(Activitiesbutton4);
         navPanel.add(Programbutton4);
-        
+
         //---------------------------------------------------------------------------------
         //Button cosmetic settings 
         Studentbutton1.setForeground(Color.black);
@@ -77,16 +74,14 @@ public class MenuGUI implements ActionListener{
         Teachersbutton3.setForeground(Color.black);
         Activitiesbutton4.setForeground(Color.black);
         Programbutton4.setForeground(Color.black);
-        
+
         Font ButtonLooks = new Font("Arial", Font.PLAIN, 20);
         Studentbutton1.setFont(ButtonLooks);
         Departmentbutton2.setFont(ButtonLooks);
         Teachersbutton3.setFont(ButtonLooks);
         Activitiesbutton4.setFont(ButtonLooks);
         Programbutton4.setFont(ButtonLooks);
-        
-        
-        
+
         //---------------------------------------------------------------------------------
         //Action listeners for buttons 
         Studentbutton1.addActionListener(this);
@@ -96,9 +91,8 @@ public class MenuGUI implements ActionListener{
         Programbutton4.addActionListener(this);
 
         //---------------------------------------------------------------------------------
-        
         //Frame settings
-        menuFrame.setBackground( Color.gray); //choose better color 
+        menuFrame.setBackground(Color.gray); //choose better color 
         menuFrame.add(headerPanel, BorderLayout.NORTH);
         menuFrame.add(navPanel, BorderLayout.CENTER);
         menuFrame.setTitle("S.I.M.S");
@@ -107,41 +101,33 @@ public class MenuGUI implements ActionListener{
         menuFrame.setResizable(false);
         menuFrame.setLocation(300, 100);
         menuFrame.setVisible(true);
-        
+
         //---------------------------------------------------------------------------------
-        
-        
     }
- 
-   
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         if (e.getSource() == this.Studentbutton1) {
+        if (e.getSource() == this.Studentbutton1) {
             menuFrame.dispose(); // Close the DepartmentsGUI
-            new StudentGUI(); 
+            new StudentGUI();
         } else if (e.getSource() == this.Departmentbutton2) {
             menuFrame.dispose();
             new DepartmentsGUI();
         } else if (e.getSource() == this.Teachersbutton3) {
             menuFrame.dispose();
             new TeachersGUI();
-        }
-        else if(e.getSource() == this.Activitiesbutton4)
-        {
+        } else if (e.getSource() == this.Activitiesbutton4) {
             menuFrame.dispose();
             new ExtraCurricularActivitiesGUI();
-        }
-        else if(e.getSource() == this.Programbutton4)
-        {
+        } else if (e.getSource() == this.Programbutton4) {
             menuFrame.dispose();
             new ProgramGUI();
         }
     }
-    
+
     public static void main(String[] args) {
-         new MenuGUI();//PROGRAM START
-         
+        new MenuGUI();//PROGRAM START
+
     }
-    
+
 }

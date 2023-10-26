@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JScrollPane;
 
 public class GradesGUI implements ActionListener {
 
@@ -33,6 +35,7 @@ public class GradesGUI implements ActionListener {
 
     // Labels
     private final JLabel gradesHeaderLabel;
+    private final JLabel searchLabel;
 
     // Buttons
     private final JButton searchButton;
@@ -46,6 +49,7 @@ public class GradesGUI implements ActionListener {
     private final JTextArea GradeScreen;
     private final JTextField courseCodeField; // Text field for course code
     private final JTextField gradeField;      // Text field for grade
+    private final JScrollPane scrollPane;
 
     public GradesGUI() {
         // Frame instances
@@ -56,16 +60,21 @@ public class GradesGUI implements ActionListener {
         SearchPanel = new JPanel(new GridLayout(2, 1));
         // Display
         GradeScreen = new JTextArea();
+        scrollPane = new JScrollPane(GradeScreen);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         // Search field
         GradeSearch = new JTextField();
         // Display panel
         displayPanel = new JPanel();
         // Edit panel
         editPanel = new JPanel();
+        //search
+        searchLabel = new JLabel("Enter Student ID:");
 
         // Course Header panel setting
         gradesHeaderNav.setBounds(0, 0, 0, 0);
-        gradesHeaderLabel = new JLabel("GRADES MENU >> Search for student ID");
+        gradesHeaderLabel = new JLabel("GRADES MENU");
         gradesHeaderNav.add(gradesHeaderLabel);
         gradesHeaderNav.setBackground(Color.gray);
 
@@ -85,35 +94,41 @@ public class GradesGUI implements ActionListener {
 
         // Display Panel
         displayPanel.setPreferredSize(new Dimension(150, 200)); // Adjust the width and height as needed
-        displayPanel.setLayout(new GridLayout(2, 0));
+        displayPanel.setLayout(new GridLayout(6, 0));
         displayPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         displayPanel.setBackground(Color.gray);
 
         GradeScreen.setBounds(10, 10, 10, 10);
+
         GradeScreen.setEditable(false);
 
         // Search panel
         SearchPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        SearchPanel.setLayout(new GridLayout(2, 1));
+        SearchPanel.setLayout(new GridLayout(1, 1));
         SearchPanel.setBackground(Color.gray);
-        SearchPanel.add(GradeSearch);
-
-        SearchPanel.add(GradeScreen);
+        SearchPanel.add(scrollPane);
+        searchLabel.setForeground(Color.WHITE);
 
         // Display panel
+        displayPanel.add(searchLabel);
+        displayPanel.add(GradeSearch);
         displayPanel.add(searchButton);
 
         // Edit panel
-        editPanel.setLayout(new GridLayout(1, 2)); // Two rows, two columns
+        //editPanel.setLayout(new GridLayout(1, 5)); // Two rows, two columns
         editPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         editPanel.setBackground(Color.gray);
 
         // Add labels and text fields for editing grades
-        JLabel courseCodeLabel = new JLabel("Course Code:");
-        JLabel gradeLabel = new JLabel("Grade:");
-        courseCodeField = new JTextField();
-        gradeField = new JTextField();
+        JLabel courseCodeLabel = new JLabel("Choose Course Code:");
+        JLabel gradeLabel = new JLabel("New Grade:");
+        courseCodeField = new JTextField(10);
+        gradeField = new JTextField(10);
+        courseCodeLabel.setForeground(Color.WHITE);
+        gradeLabel.setForeground(Color.WHITE);
+                
 
+                
         editPanel.add(courseCodeLabel);
         editPanel.add(courseCodeField);
         editPanel.add(gradeLabel);
@@ -121,9 +136,9 @@ public class GradesGUI implements ActionListener {
         editPanel.add(commitButton);
 
         // Button cosmetic settings
-        searchButton.setForeground(Color.gray);
-        backButton.setForeground(Color.gray);
-        commitButton.setForeground(Color.gray);
+        searchButton.setForeground(Color.BLACK);
+        backButton.setForeground(Color.RED);
+        commitButton.setForeground(Color.BLACK);
 
         Font buttonFont = new Font("Arial", Font.BOLD, 20);
         searchButton.setFont(buttonFont);
@@ -154,9 +169,13 @@ public class GradesGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
             GradeGUI.dispose(); // Close the GradesGUI
-            new StudentGUI(); 
+            new StudentGUI();
         } else if (e.getSource() == searchButton) {
             //  search logic here
+            String courseSearchText = GradeSearch.getText();
+            InfoSearch data = new InfoSearch();
+            String displayStudents = data.searchStudentGrades(courseSearchText);
+            GradeScreen.setText(displayStudents);
         } else if (e.getSource() == commitButton) {
             //  commit grade changes here
         }
